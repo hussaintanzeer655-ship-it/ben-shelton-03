@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ben Shelton - Gallery</title>
+  <style>
+    :root{--bg:#0a0a0a;--card:#141414;--shadow:0 8px 20px rgba(0,0,0,.35);--accent:#58d68d;}
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#eee}
+    header{padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:#0a0a0a;z-index:10}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;padding:1rem}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+    .thumb{height:120px;background:linear-gradient(135deg, #111, #333);}
+    .body{padding:0.75rem}
+    .title{font-size:0.95rem;margin:0 0 .4rem}
+    .chip{font-size:.75rem;color:#cbd5e1;background:#1f1f1f;border-radius:6px;padding:2px 6px;margin-right:6px}
+    footer{text-align:center;padding:1rem 0;color:#a0a9b6}
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Ben Shelton</strong>
+  </header>
+  <section class="grid" id="g">
+    <!-- cards injected -->
+  </section>
+  <footer>© Ben Shelton</footer>
+  <script>
+    const items=[
+      {t:'Nature Grid', c:['landscape','photo'], h:'#2a7a4e'},
+      {t:'Cities', c:['urban','night'], h:'#3a4a78'},
+      {t:'Portraits', c:['people'], h:'#6d4c41'},
+      {t:'Abstract', c:['color','shape'], h:'#5e3a92'},
+      {t:'Tech', c:['code'], h:'#2b6f8f'},
+      {t:'Waves', c:['sea'], h:'#2d7a8f'}
+    ];
+    const g=document.getElementById('g');
+    items.slice(0,5).forEach(it=>{
+      const c=document.createElement('div');c.className='card';
+      c.innerHTML=`<div class="thumb" style="background:linear-gradient(135deg, ${it.h}, #000);"></div>
+      <div class="body"><div class="title">${it.t}</div><div>${it.c.map(x=>'<span class="chip">'+x+'</span>').join('')}</div></div>`;
+      g.appendChild(c);
+    });
+  </script>
+</body>
+</html>
